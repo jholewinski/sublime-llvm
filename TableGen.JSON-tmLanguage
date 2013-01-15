@@ -1,0 +1,151 @@
+{
+    "name" : "TableGen",
+    "scopeName" : "source.td",
+    "fileTypes" : ["td"],
+    "patterns" : [
+        {
+            "match" : "\\/\\/.*",
+            "name" : "comment.line.double-slash.td",
+            "comment" : "Single line comments."
+        },
+        {
+            "match" : "\\b(?:\\d+|0b[01]+|0x[\\da-fA-F]+|\\?|null_frag|true|false)\\b",
+            "name" : "constant.numeric.td",
+            "comment" : "Numbers."
+        },
+        {
+            "match" : "^\\b(?:multi)?class\\b",
+            "name" : "storage.type.class.td",
+            "comment" : "Class keyword."
+        },
+        {
+            "match" : "\\bdefm?\\b",
+            "name" : "storage.type.function.td",
+            "comment" : "Def keyword."
+        },
+        {
+            "match" : "\\b(?:bits?|code|dag|list|f\\d+|i\\d+|int|string)\\b",
+            "name" : "storage.type.td",
+            "comment" : "Data types."
+        },
+        {
+            "match" : "\\b(?:AsmOperandClass|AsmParser|AsmParserVariant|AsmWriter|AssemblerPredicate|ComplexPattern|Format|InstrInfo|Instruction|FPFormat|ImmType|InstrItinClass|Operand|Pat|PatFrag|PatLeaf|Pattern|Predicate|Processor|Register|RegisterClass|RegisterOperand|RegisterWithSubRegs|SDCallSeqEnd|SDCallSeqStart|SDNode|SDNodeProperty|SDNodeXForm|SDPatternOperator|SDTypeConstraint|SDTypeProfile|SubtargetFeature|Target|ValueType)\\b",
+            "name" : "support.class.td",
+            "comment" : "TableGen classes."
+        },
+        {
+            "match" : "!(?:cast|empty|eq|foreach|head|if|strconcat|subst|tail)\\b",
+            "name" : "support.function.td",
+            "comment" : "TableGen functions."
+        },
+        {
+            "match" : "\\b(?:field|let)\\b",
+            "name" : "keyword.td",
+            "comment" : "Keywords."
+        },
+        {
+            "match" : "\\b(?:foreach|in)\\b",
+            "name" : "keyword.control.td",
+            "comment" : "Control keywords."
+        },
+        {
+            "match" : "\\b(?:include)\\b",
+            "name" : "keyword.control.import.td",
+            "comment" : "Include keyword."
+        },
+        {
+            "match" : "{(\\d+)}|{(\\d+)-(\\d+)}",
+            "name" : "keyword.operator.td",
+            "captures" : {
+                "1" : {
+                    "name" : "constant.numeric.td"
+                },
+                "2" : {
+                    "name" : "constant.numeric.td"
+                },
+                "3" : {
+                    "name" : "constant.numeric.td"
+                }
+            },
+            "comment" : "Bit slices."
+        },
+        {
+            "begin" : "\\[{",
+            "end" : "}\\]",
+            "beginCaptures" : {
+                "0"  : { "name" : "keyword.operator.td" }
+            },
+            "endCaptures" : {
+                "0"  : { "name" : "keyword.operator.td" }
+            },
+            "name" : "meta.preprocessor.td",
+            "patterns" : [
+                {
+                    "include" : "$self"
+                },
+                {
+                    "match" : "[<>]",
+                    "name" : "keyword.operator.td",
+                    "comment" : "Operators."
+                },
+                {
+                    "match" : "\\b(?:char|u?int(?:8|16|32|64)_t|long|short|unsigned)\\b",
+                    "name" : "storage.type.int.td"
+                },
+                {
+                    "match" : "\\b(?:do|if|else|for|return|while)\\b",
+                    "name" : "keyword.control.td"
+                }
+            ],
+            "comment" : "Code fragments."
+        },
+        {
+            "match" : "(?:\\->)|[&|!~.:=+\\-\\[\\]]",
+            "name" : "keyword.operator.td",
+            "comment" : "Operators."
+        },
+        {
+            "match" : "\\$(?:[a-zA-Z$._][\\w$._]+|\"[^\"]+\")",
+            "name" : "variable.td",
+            "comment" : "Local variables."
+        },
+        {
+            "match" : "@(?:[a-zA-Z$._][\\w$._]+|\"[^\"]+\")",
+            "name" : "variable.global.td",
+            "comment" : "Global variables."
+        },
+        {
+            "begin" : "\"",
+            "end" : "\"",
+            "name" : "string.double.td",
+            "patterns" : [
+                {
+                    "match" : "\\$[a-zA-Z_][\\w_]+",
+                    "name" : "string.regexp.td"
+                }
+            ],
+            "comment" : "Double-quoted strings."
+        },
+        {
+            "begin" : "<",
+            "end" : ">",
+            "beginCaptures" : {
+                "0"  : { "name" : "keyword.operator.td" }
+            },
+            "endCaptures" : {
+                "0"  : { "name" : "keyword.operator.td" }
+            },
+            "patterns" : [
+                {
+                    "include" : "$self"
+                },
+                {
+                    "match" : "[a-zA-Z_][\\w]*",
+                    "name" : "variable.parameter.td"
+                }
+            ],
+            "comment" : "Templates."
+        }
+    ],
+    "uuid" : "6233a58e-cb1d-4e1d-91b5-cb3778f87559"
+}

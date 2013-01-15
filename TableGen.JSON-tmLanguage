@@ -29,7 +29,7 @@
             "comment" : "Data types."
         },
         {
-            "match" : "\\b(?:AsmOperandClass|AsmParser|AsmParserVariant|AsmWriter|AssemblerPredicate|ComplexPattern|Format|InstrInfo|Instruction|FPFormat|ImmType|InstrItinClass|Operand|Pat|PatFrag|PatLeaf|Pattern|Predicate|Processor|Register|RegisterClass|RegisterOperand|RegisterWithSubRegs|SDCallSeqEnd|SDCallSeqStart|SDNode|SDNodeProperty|SDNodeXForm|SDPatternOperator|SDTypeConstraint|SDTypeProfile|SubtargetFeature|Target|ValueType)\\b",
+            "match" : "\\b(?:AsmOperandClass|AsmParser|AsmParserVariant|AsmWriter|AssemblerPredicate|ComplexPattern|Format|InstrInfo|Instruction|Intrinsic|FPFormat|ImmType|InstrItinClass|Operand|Pat|PatFrag|PatLeaf|Pattern|Predicate|Processor|Register|RegisterClass|RegisterOperand|RegisterWithSubRegs|SDCallSeqEnd|SDCallSeqStart|SDNode|SDNodeProperty|SDNodeXForm|SDPatternOperator|SDTypeConstraint|SDTypeProfile|SubtargetFeature|Target|ValueType)\\b",
             "name" : "support.class.td",
             "comment" : "TableGen classes."
         },
@@ -89,7 +89,7 @@
                     "comment" : "Operators."
                 },
                 {
-                    "match" : "\\b(?:char|u?int(?:8|16|32|64)_t|long|short|unsigned)\\b",
+                    "match" : "\\b(?:char|u?int(?:8|16|32|64)_t|long|short|signed|unsigned)\\b",
                     "name" : "storage.type.int.td"
                 },
                 {
@@ -105,14 +105,9 @@
             "comment" : "Operators."
         },
         {
-            "match" : "\\$(?:[a-zA-Z$._][\\w$._]+|\"[^\"]+\")",
+            "match" : "\\$[a-zA-Z_][\\w_]+",
             "name" : "variable.td",
             "comment" : "Local variables."
-        },
-        {
-            "match" : "@(?:[a-zA-Z$._][\\w$._]+|\"[^\"]+\")",
-            "name" : "variable.global.td",
-            "comment" : "Global variables."
         },
         {
             "begin" : "\"",
@@ -120,7 +115,7 @@
             "name" : "string.double.td",
             "patterns" : [
                 {
-                    "match" : "\\$[a-zA-Z_][\\w_]+",
+                    "match" : "\\$\\{[a-zA-Z_][\\w_:]+\\}|\\$[a-zA-Z_][\\w_]+",
                     "name" : "string.regexp.td"
                 }
             ],

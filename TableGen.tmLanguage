@@ -54,7 +54,7 @@
 			<key>comment</key>
 			<string>TableGen classes.</string>
 			<key>match</key>
-			<string>\b(?:AsmOperandClass|AsmParser|AsmParserVariant|AsmWriter|AssemblerPredicate|ComplexPattern|Format|InstrInfo|Instruction|FPFormat|ImmType|InstrItinClass|Operand|Pat|PatFrag|PatLeaf|Pattern|Predicate|Processor|Register|RegisterClass|RegisterOperand|RegisterWithSubRegs|SDCallSeqEnd|SDCallSeqStart|SDNode|SDNodeProperty|SDNodeXForm|SDPatternOperator|SDTypeConstraint|SDTypeProfile|SubtargetFeature|Target|ValueType)\b</string>
+			<string>\b(?:AsmOperandClass|AsmParser|AsmParserVariant|AsmWriter|AssemblerPredicate|ComplexPattern|Format|InstrInfo|Instruction|Intrinsic|FPFormat|ImmType|InstrItinClass|Operand|Pat|PatFrag|PatLeaf|Pattern|Predicate|Processor|Register|RegisterClass|RegisterOperand|RegisterWithSubRegs|SDCallSeqEnd|SDCallSeqStart|SDNode|SDNodeProperty|SDNodeXForm|SDPatternOperator|SDTypeConstraint|SDTypeProfile|SubtargetFeature|Target|ValueType)\b</string>
 			<key>name</key>
 			<string>support.class.td</string>
 		</dict>
@@ -157,7 +157,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:char|u?int(?:8|16|32|64)_t|long|short|unsigned)\b</string>
+					<string>\b(?:char|u?int(?:8|16|32|64)_t|long|short|signed|unsigned)\b</string>
 					<key>name</key>
 					<string>storage.type.int.td</string>
 				</dict>
@@ -181,17 +181,9 @@
 			<key>comment</key>
 			<string>Local variables.</string>
 			<key>match</key>
-			<string>\$(?:[a-zA-Z$._][\w$._]+|"[^"]+")</string>
+			<string>\$[a-zA-Z_][\w_]+</string>
 			<key>name</key>
 			<string>variable.td</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Global variables.</string>
-			<key>match</key>
-			<string>@(?:[a-zA-Z$._][\w$._]+|"[^"]+")</string>
-			<key>name</key>
-			<string>variable.global.td</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -206,7 +198,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\$[a-zA-Z_][\w_]+</string>
+					<string>\$\{[a-zA-Z_][\w_:]+\}|\$[a-zA-Z_][\w_]+</string>
 					<key>name</key>
 					<string>string.regexp.td</string>
 				</dict>

@@ -11,85 +11,13 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>comment</key>
-			<string>Single line comments.</string>
-			<key>match</key>
-			<string>\/\/.*</string>
-			<key>name</key>
-			<string>comment.line.double-slash.td</string>
+			<key>include</key>
+			<string>#SimplePatternsAndTemplates</string>
 		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Numbers.</string>
-			<key>match</key>
-			<string>\b(?:\d+|0b[01]+|0x[\da-fA-F]+|\?|null_frag|true|false)\b</string>
-			<key>name</key>
-			<string>constant.numeric.td</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Class keyword.</string>
-			<key>match</key>
-			<string>^\b(?:multi)?class\b</string>
-			<key>name</key>
-			<string>storage.type.class.td</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Def keyword.</string>
-			<key>match</key>
-			<string>\bdefm?\b</string>
-			<key>name</key>
-			<string>storage.type.function.td</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Data types.</string>
-			<key>match</key>
-			<string>\b(?:bits?|code|dag|list|f\d+|i\d+|int|string)\b</string>
-			<key>name</key>
-			<string>storage.type.td</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>TableGen classes.</string>
-			<key>match</key>
-			<string>\b(?:AsmOperandClass|AsmParser|AsmParserVariant|AsmWriter|AssemblerPredicate|ComplexPattern|Format|InstrInfo|Instruction|Intrinsic|FPFormat|ImmType|InstrItinClass|Operand|Pat|PatFrag|PatLeaf|Pattern|Predicate|Processor|Register|RegisterClass|RegisterOperand|RegisterWithSubRegs|SDCallSeqEnd|SDCallSeqStart|SDNode|SDNodeProperty|SDNodeXForm|SDPatternOperator|SDTypeConstraint|SDTypeProfile|SubtargetFeature|Target|ValueType)\b</string>
-			<key>name</key>
-			<string>support.class.td</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>TableGen functions.</string>
-			<key>match</key>
-			<string>!(?:cast|empty|eq|foreach|head|if|strconcat|subst|tail)\b</string>
-			<key>name</key>
-			<string>support.function.td</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Keywords.</string>
-			<key>match</key>
-			<string>\b(?:field|let)\b</string>
-			<key>name</key>
-			<string>keyword.td</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Control keywords.</string>
-			<key>match</key>
-			<string>\b(?:foreach|in)\b</string>
-			<key>name</key>
-			<string>keyword.control.td</string>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>Include keyword.</string>
-			<key>match</key>
-			<string>\b(?:include)\b</string>
-			<key>name</key>
-			<string>keyword.control.import.td</string>
-		</dict>
+	</array>
+	<key>repository</key>
+	<dict>
+		<key>BitSlices</key>
 		<dict>
 			<key>captures</key>
 			<dict>
@@ -116,6 +44,16 @@
 			<key>name</key>
 			<string>keyword.operator.td</string>
 		</dict>
+		<key>Class</key>
+		<dict>
+			<key>comment</key>
+			<string>Class keyword.</string>
+			<key>match</key>
+			<string>^\b(?:multi)?class\b</string>
+			<key>name</key>
+			<string>storage.type.class.td</string>
+		</dict>
+		<key>CodeFragments</key>
 		<dict>
 			<key>begin</key>
 			<string>\[{</string>
@@ -145,7 +83,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>$self</string>
+					<string>#SimplePatterns</string>
 				</dict>
 				<dict>
 					<key>comment</key>
@@ -169,22 +107,34 @@
 				</dict>
 			</array>
 		</dict>
+		<key>ControlKeywords</key>
 		<dict>
 			<key>comment</key>
-			<string>Operators.</string>
+			<string>Control keywords.</string>
 			<key>match</key>
-			<string>(?:\-&gt;)|[&amp;|!~.:=+\-\[\]]</string>
+			<string>\b(?:foreach|in)\b</string>
 			<key>name</key>
-			<string>keyword.operator.td</string>
+			<string>keyword.control.td</string>
 		</dict>
+		<key>DataTypes</key>
 		<dict>
 			<key>comment</key>
-			<string>Local variables.</string>
+			<string>Data types.</string>
 			<key>match</key>
-			<string>\$[a-zA-Z_][\w_]+</string>
+			<string>\b(?:bits?|code|dag|list|f\d+|i\d+|int|string)\b</string>
 			<key>name</key>
-			<string>variable.td</string>
+			<string>storage.type.td</string>
 		</dict>
+		<key>Def</key>
+		<dict>
+			<key>comment</key>
+			<string>Def keyword.</string>
+			<key>match</key>
+			<string>\bdefm?\b</string>
+			<key>name</key>
+			<string>storage.type.function.td</string>
+		</dict>
+		<key>DoubleQuotedStrings</key>
 		<dict>
 			<key>begin</key>
 			<string>"</string>
@@ -204,6 +154,264 @@
 				</dict>
 			</array>
 		</dict>
+		<key>IncludeKeyword</key>
+		<dict>
+			<key>comment</key>
+			<string>Include keyword.</string>
+			<key>match</key>
+			<string>\b(?:include)\b</string>
+			<key>name</key>
+			<string>keyword.control.import.td</string>
+		</dict>
+		<key>Keywords</key>
+		<dict>
+			<key>comment</key>
+			<string>Keywords.</string>
+			<key>match</key>
+			<string>\b(?:field|let)\b</string>
+			<key>name</key>
+			<string>keyword.td</string>
+		</dict>
+		<key>Numbers</key>
+		<dict>
+			<key>comment</key>
+			<string>Numbers.</string>
+			<key>match</key>
+			<string>\b(?:\d+|0b[01]+|0x[\da-fA-F]+|\?|null_frag|true|false)\b</string>
+			<key>name</key>
+			<string>constant.numeric.td</string>
+		</dict>
+		<key>Operators</key>
+		<dict>
+			<key>comment</key>
+			<string>Operators.</string>
+			<key>match</key>
+			<string>(?:\-&gt;)|[&amp;|!~.:=+\-\[\]]</string>
+			<key>name</key>
+			<string>keyword.operator.td</string>
+		</dict>
+		<key>SimplePatterns</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#SingleLineComments</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Numbers</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Class</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Def</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#DataTypes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#TableGenClasses</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#TableGenFunctions</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Keywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#ControlKeywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#IncludeKeyword</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#BitSlices</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Operators</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Variables</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#DoubleQuotedStrings</string>
+				</dict>
+			</array>
+		</dict>
+		<key>SimplePatternsAndCodeFragments</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#SingleLineComments</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Numbers</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Class</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Def</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#DataTypes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#TableGenClasses</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#TableGenFunctions</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Keywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#ControlKeywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#IncludeKeyword</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#BitSlices</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#CodeFragments</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Operators</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Variables</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#DoubleQuotedStrings</string>
+				</dict>
+			</array>
+		</dict>
+		<key>SimplePatternsAndTemplates</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#SingleLineComments</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Numbers</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Class</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Def</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#DataTypes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#TableGenClasses</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#TableGenFunctions</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Keywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#ControlKeywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#IncludeKeyword</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#BitSlices</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Operators</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Variables</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#DoubleQuotedStrings</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Templates</string>
+				</dict>
+			</array>
+		</dict>
+		<key>SingleLineComments</key>
+		<dict>
+			<key>comment</key>
+			<string>Single line comments.</string>
+			<key>match</key>
+			<string>\/\/.*</string>
+			<key>name</key>
+			<string>comment.line.double-slash.td</string>
+		</dict>
+		<key>TableGenClasses</key>
+		<dict>
+			<key>comment</key>
+			<string>TableGen classes.</string>
+			<key>match</key>
+			<string>\b(?:AsmOperandClass|AsmParser|AsmParserVariant|AsmWriter|AssemblerPredicate|ComplexPattern|Format|InstrInfo|Instruction|Intrinsic|FPFormat|ImmType|InstrItinClass|Operand|Pat|PatFrag|PatLeaf|Pattern|Predicate|Processor|Register|RegisterClass|RegisterOperand|RegisterWithSubRegs|SDCallSeqEnd|SDCallSeqStart|SDNode|SDNodeProperty|SDNodeXForm|SDPatternOperator|SDTypeConstraint|SDTypeProfile|SubtargetFeature|Target|ValueType)\b</string>
+			<key>name</key>
+			<string>support.class.td</string>
+		</dict>
+		<key>TableGenFunctions</key>
+		<dict>
+			<key>comment</key>
+			<string>TableGen functions.</string>
+			<key>match</key>
+			<string>!(?:cast|empty|eq|foreach|head|if|strconcat|subst|tail)\b</string>
+			<key>name</key>
+			<string>support.function.td</string>
+		</dict>
+		<key>Templates</key>
 		<dict>
 			<key>begin</key>
 			<string>&lt;</string>
@@ -231,7 +439,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>$self</string>
+					<string>#SimplePatternsAndCodeFragments</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -241,7 +449,16 @@
 				</dict>
 			</array>
 		</dict>
-	</array>
+		<key>Variables</key>
+		<dict>
+			<key>comment</key>
+			<string>Variables.</string>
+			<key>match</key>
+			<string>\$[a-zA-Z_][\w_]+</string>
+			<key>name</key>
+			<string>variable.td</string>
+		</dict>
+	</dict>
 	<key>scopeName</key>
 	<string>source.td</string>
 	<key>uuid</key>

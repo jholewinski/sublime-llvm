@@ -2,58 +2,58 @@
     "name" : "TableGen",
     "scopeName" : "source.td",
     "fileTypes" : ["td"],
-    "patterns" : [
-        {
+    "repository" : {
+        "SingleLineComments" : {
             "match" : "\\/\\/.*",
             "name" : "comment.line.double-slash.td",
             "comment" : "Single line comments."
         },
-        {
+        "Numbers" : {
             "match" : "\\b(?:\\d+|0b[01]+|0x[\\da-fA-F]+|\\?|null_frag|true|false)\\b",
             "name" : "constant.numeric.td",
             "comment" : "Numbers."
         },
-        {
+        "Class" : {
             "match" : "^\\b(?:multi)?class\\b",
             "name" : "storage.type.class.td",
             "comment" : "Class keyword."
         },
-        {
+        "Def" : {
             "match" : "\\bdefm?\\b",
             "name" : "storage.type.function.td",
             "comment" : "Def keyword."
         },
-        {
+        "DataTypes" : {
             "match" : "\\b(?:bits?|code|dag|list|f\\d+|i\\d+|int|string)\\b",
             "name" : "storage.type.td",
             "comment" : "Data types."
         },
-        {
+        "TableGenClasses" : {
             "match" : "\\b(?:AsmOperandClass|AsmParser|AsmParserVariant|AsmWriter|AssemblerPredicate|ComplexPattern|Format|InstrInfo|Instruction|Intrinsic|FPFormat|ImmType|InstrItinClass|Operand|Pat|PatFrag|PatLeaf|Pattern|Predicate|Processor|Register|RegisterClass|RegisterOperand|RegisterWithSubRegs|SDCallSeqEnd|SDCallSeqStart|SDNode|SDNodeProperty|SDNodeXForm|SDPatternOperator|SDTypeConstraint|SDTypeProfile|SubtargetFeature|Target|ValueType)\\b",
             "name" : "support.class.td",
             "comment" : "TableGen classes."
         },
-        {
+        "TableGenFunctions" : {
             "match" : "!(?:cast|empty|eq|foreach|head|if|strconcat|subst|tail)\\b",
             "name" : "support.function.td",
             "comment" : "TableGen functions."
         },
-        {
+        "Keywords" : {
             "match" : "\\b(?:field|let)\\b",
             "name" : "keyword.td",
             "comment" : "Keywords."
         },
-        {
+        "ControlKeywords" : {
             "match" : "\\b(?:foreach|in)\\b",
             "name" : "keyword.control.td",
             "comment" : "Control keywords."
         },
-        {
+        "IncludeKeyword" : {
             "match" : "\\b(?:include)\\b",
             "name" : "keyword.control.import.td",
             "comment" : "Include keyword."
         },
-        {
+        "BitSlices" : {
             "match" : "{(\\d+)}|{(\\d+)-(\\d+)}",
             "name" : "keyword.operator.td",
             "captures" : {
@@ -69,7 +69,29 @@
             },
             "comment" : "Bit slices."
         },
-        {
+        "Operators" : {
+            "match" : "(?:\\->)|[&|!~.:=+\\-\\[\\]]",
+            "name" : "keyword.operator.td",
+            "comment" : "Operators."
+        },
+        "Variables" : {
+            "match" : "\\$[a-zA-Z_][\\w_]+",
+            "name" : "variable.td",
+            "comment" : "Variables."
+        },
+        "DoubleQuotedStrings" : {
+            "begin" : "\"",
+            "end" : "\"",
+            "name" : "string.double.td",
+            "patterns" : [
+                {
+                    "match" : "\\$\\{[a-zA-Z_][\\w_:]+\\}|\\$[a-zA-Z_][\\w_]+",
+                    "name" : "string.regexp.td"
+                }
+            ],
+            "comment" : "Double-quoted strings."
+        },
+        "CodeFragments" : {
             "begin" : "\\[{",
             "end" : "}\\]",
             "beginCaptures" : {
@@ -81,7 +103,7 @@
             "name" : "meta.preprocessor.td",
             "patterns" : [
                 {
-                    "include" : "$self"
+                    "include" : "#SimplePatterns"
                 },
                 {
                     "match" : "[<>]",
@@ -99,29 +121,7 @@
             ],
             "comment" : "Code fragments."
         },
-        {
-            "match" : "(?:\\->)|[&|!~.:=+\\-\\[\\]]",
-            "name" : "keyword.operator.td",
-            "comment" : "Operators."
-        },
-        {
-            "match" : "\\$[a-zA-Z_][\\w_]+",
-            "name" : "variable.td",
-            "comment" : "Local variables."
-        },
-        {
-            "begin" : "\"",
-            "end" : "\"",
-            "name" : "string.double.td",
-            "patterns" : [
-                {
-                    "match" : "\\$\\{[a-zA-Z_][\\w_:]+\\}|\\$[a-zA-Z_][\\w_]+",
-                    "name" : "string.regexp.td"
-                }
-            ],
-            "comment" : "Double-quoted strings."
-        },
-        {
+        "Templates" : {
             "begin" : "<",
             "end" : ">",
             "beginCaptures" : {
@@ -132,7 +132,7 @@
             },
             "patterns" : [
                 {
-                    "include" : "$self"
+                    "include" : "#SimplePatternsAndCodeFragments"
                 },
                 {
                     "match" : "[a-zA-Z_][\\w]*",
@@ -140,6 +140,67 @@
                 }
             ],
             "comment" : "Templates."
+        },
+        "SimplePatterns" : {
+            "patterns" : [
+                { "include" : "#SingleLineComments" },
+                { "include" : "#Numbers" },
+                { "include" : "#Class" },
+                { "include" : "#Def" },
+                { "include" : "#DataTypes" },
+                { "include" : "#TableGenClasses" },
+                { "include" : "#TableGenFunctions" },
+                { "include" : "#Keywords" },
+                { "include" : "#ControlKeywords" },
+                { "include" : "#IncludeKeyword" },
+                { "include" : "#BitSlices" },
+                { "include" : "#Operators" },
+                { "include" : "#Variables" },
+                { "include" : "#DoubleQuotedStrings" }
+            ]
+        },
+        "SimplePatternsAndCodeFragments" : {
+            "patterns" : [
+                { "include" : "#SingleLineComments" },
+                { "include" : "#Numbers" },
+                { "include" : "#Class" },
+                { "include" : "#Def" },
+                { "include" : "#DataTypes" },
+                { "include" : "#TableGenClasses" },
+                { "include" : "#TableGenFunctions" },
+                { "include" : "#Keywords" },
+                { "include" : "#ControlKeywords" },
+                { "include" : "#IncludeKeyword" },
+                { "include" : "#BitSlices" },
+                { "include" : "#CodeFragments" },
+                { "include" : "#Operators" },
+                { "include" : "#Variables" },
+                { "include" : "#DoubleQuotedStrings" }
+            ]
+        },
+        "SimplePatternsAndTemplates" : {
+            "patterns" : [
+                { "include" : "#SingleLineComments" },
+                { "include" : "#Numbers" },
+                { "include" : "#Class" },
+                { "include" : "#Def" },
+                { "include" : "#DataTypes" },
+                { "include" : "#TableGenClasses" },
+                { "include" : "#TableGenFunctions" },
+                { "include" : "#Keywords" },
+                { "include" : "#ControlKeywords" },
+                { "include" : "#IncludeKeyword" },
+                { "include" : "#BitSlices" },
+                { "include" : "#Operators" },
+                { "include" : "#Variables" },
+                { "include" : "#DoubleQuotedStrings" },
+                { "include" : "#Templates" }
+            ]
+        }
+    },
+    "patterns" : [
+        {
+            "include" : "#SimplePatternsAndTemplates"
         }
     ],
     "uuid" : "6233a58e-cb1d-4e1d-91b5-cb3778f87559"

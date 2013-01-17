@@ -1,0 +1,8 @@
+## OS X
+.DS_Store
+._*
+.Trashes
+.Spotlight*
+
+## Sublime Text 2
+*.cache

@@ -132,7 +132,7 @@
             },
             "patterns" : [
                 {
-                    "include" : "#SimplePatternsAndCodeFragments"
+                    "include" : "#All"
                 },
                 {
                     "match" : "[a-zA-Z_][\\w]*",
@@ -159,25 +159,6 @@
                 { "include" : "#DoubleQuotedStrings" }
             ]
         },
-        "SimplePatternsAndCodeFragments" : {
-            "patterns" : [
-                { "include" : "#SingleLineComments" },
-                { "include" : "#Numbers" },
-                { "include" : "#Class" },
-                { "include" : "#Def" },
-                { "include" : "#DataTypes" },
-                { "include" : "#TableGenClasses" },
-                { "include" : "#TableGenFunctions" },
-                { "include" : "#Keywords" },
-                { "include" : "#ControlKeywords" },
-                { "include" : "#IncludeKeyword" },
-                { "include" : "#BitSlices" },
-                { "include" : "#CodeFragments" },
-                { "include" : "#Operators" },
-                { "include" : "#Variables" },
-                { "include" : "#DoubleQuotedStrings" }
-            ]
-        },
         "SimplePatternsAndTemplates" : {
             "patterns" : [
                 { "include" : "#SingleLineComments" },
@@ -196,11 +177,31 @@
                 { "include" : "#DoubleQuotedStrings" },
                 { "include" : "#Templates" }
             ]
+        },
+        "All" : {
+            "patterns" : [
+                { "include" : "#SingleLineComments" },
+                { "include" : "#Numbers" },
+                { "include" : "#Class" },
+                { "include" : "#Def" },
+                { "include" : "#DataTypes" },
+                { "include" : "#TableGenClasses" },
+                { "include" : "#TableGenFunctions" },
+                { "include" : "#Keywords" },
+                { "include" : "#ControlKeywords" },
+                { "include" : "#IncludeKeyword" },
+                { "include" : "#BitSlices" },
+                { "include" : "#CodeFragments" },
+                { "include" : "#Operators" },
+                { "include" : "#Variables" },
+                { "include" : "#DoubleQuotedStrings" },
+                { "include" : "#Templates" }
+            ]
         }
     },
     "patterns" : [
         {
-            "include" : "#SimplePatternsAndTemplates"
+            "include" : "#All"
         }
     ],
     "uuid" : "6233a58e-cb1d-4e1d-91b5-cb3778f87559"

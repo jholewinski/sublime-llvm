@@ -12,11 +12,81 @@
 	<array>
 		<dict>
 			<key>include</key>
-			<string>#SimplePatternsAndTemplates</string>
+			<string>#All</string>
 		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>All</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#SingleLineComments</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Numbers</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Class</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Def</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#DataTypes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#TableGenClasses</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#TableGenFunctions</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Keywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#ControlKeywords</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#IncludeKeyword</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#BitSlices</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#CodeFragments</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Operators</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Variables</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#DoubleQuotedStrings</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#Templates</string>
+				</dict>
+			</array>
+		</dict>
 		<key>BitSlices</key>
 		<dict>
 			<key>captures</key>
@@ -252,72 +322,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>SimplePatternsAndCodeFragments</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#SingleLineComments</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#Numbers</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#Class</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#Def</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#DataTypes</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#TableGenClasses</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#TableGenFunctions</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#Keywords</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#ControlKeywords</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#IncludeKeyword</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#BitSlices</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#CodeFragments</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#Operators</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#Variables</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#DoubleQuotedStrings</string>
-				</dict>
-			</array>
-		</dict>
 		<key>SimplePatternsAndTemplates</key>
 		<dict>
 			<key>patterns</key>
@@ -439,7 +443,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#SimplePatternsAndCodeFragments</string>
+					<string>#All</string>
 				</dict>
 				<dict>
 					<key>match</key>
